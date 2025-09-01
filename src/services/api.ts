@@ -146,6 +146,13 @@ class ApiService {
     return this.request(`/users/${id}`);
   }
 
+  async updateProfile(data: any) {
+    return this.request('/auth/profile', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
   async getUsers(params?: any) {
     const queryString = params ? new URLSearchParams(params).toString() : '';
     return this.request(`/users${queryString ? `?${queryString}` : ''}`);
