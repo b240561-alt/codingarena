@@ -24,11 +24,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme") || "light";
-    const [theme, setTheme] = useState<"light" | "dark">(
-      storedTheme as "light" | "dark"
-    );
-
+    localStorage.setItem("theme", JSON.stringify(isDark));
+    
     if (isDark) {
       document.documentElement.classList.add("dark");
     } else {
